@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<object name="obj1" type="audio/mpeg" data="sNormal_Booking_recording.mp3" width="200" height="20">
+  <param name="controller" value="true">
+  <param name="autoplay" value="false">
+  <param name="autoStart" value="0">
+</object>    
+
+
+<script language="javascript" type="text/javascript">
+function playSound1() {
+  this.appt = document.getElementsByName("obj1")[0].element;
+    alert(this.appt.getAttribute("data"));
+  this.appt.setAttribute("autplay","true")
+}
+
+function dummyFunction() {alert("aaa");}
+    
+function playSound2() {
+  document.getElementById("dummy").innerHTML= "<object type=\"audio/mpeg\" data=\""
+    +"Normal_Booking_recording.mp3" +"\" width=\"0\" height=\"0\" autoplay=\"true\" autoStart=\"0\"/>";
+}
+    
+function Sound(source,volume,loop)
+{
+    this.source=source;
+    this.volume=volume;
+    this.loop=loop;
+    var son;
+    this.son=son;
+    this.finish=false;
+    this.stop=function()
+    {
+        var element = document.getElementById("disv1");
+        element.removeChild(this.son);
+    }
+    this.start=function()
+    {
+        if(this.finish)return false;       
+        this.son=document.createElement("object");
+        this.son.setAttribute("type", "audio/mpeg")
+        this.son.setAttribute("data","Normal_Booking_recording.mp3");
+        this.son.setAttribute("autoplay", "true");
+        this.son.setAttribute("autoStart", "0");
+        this.son.setAttribute("width", "0");
+        this.son.setAttribute("height", "0");
+        var element = document.getElementById("div1");        
+        element.appendChild(this.son);
+    }
+    this.remove=function()
+    {
+        document.body.removeChild(this.son);
+        this.finish=true;
+    }
+    this.init=function(volume,loop)
+    {
+        this.finish=false;
+        this.volume=volume;
+        this.loop=loop;
+    }
+}
+
+function playSound3() {
+    var foo=new Sound("URL",100,true);
+    foo.start();
+    setTimeout('function() {dummyFunction()}', 5000);
+    foo.stop();
+}    
+        
+</script>
+<span id="dummy"></span> 
+<div id="div1">
+</div>
+
+<a href="#" onclick="playSound1();">Click here to hear a sound 1</a>    
+<a href="#" onclick="playSound2();">Click here to hear a sound 2</a>
+<a href="#" onclick="playSound3();">Click here to hear a sound 3</a>
+</body>
+</html>
